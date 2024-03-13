@@ -27,6 +27,9 @@ use App\Livewire\Admin\ViewCustomer;
 use App\Livewire\Admin\ViewOrder;
 use App\Livewire\Admin\AdminSlider;
 use App\Livewire\Admin\AdminBanner;
+use App\Livewire\Admin\CreateSlider;
+use App\Livewire\Admin\Sponsers;
+use App\Http\Controllers\EditController;
 
 
 /*
@@ -58,7 +61,6 @@ Route::group(['middleware' => ['auth', 'authadmin']], function () {
     Route::get('/edit-product', EditProduct::class)->name('edit-product');
     Route::get('/categories', AdminCategory::class)->name('categories');
     Route::get('/add-category', AddCategory::class)->name('add-category');
-    Route::get('/edit-category', EditCategory::class)->name('edit-category');
     Route::get('/orders', AdminOrders::class)->name('orders');
     Route::get('/view-order', ViewOrder::class)->name('view-order');
     Route::get('/customers', Customers::class)->name('customers');
@@ -68,6 +70,19 @@ Route::group(['middleware' => ['auth', 'authadmin']], function () {
     Route::get('/slider', AdminSlider::class)->name('sliders');
     Route::get('/banner', AdminBanner::class)->name('banners');
     Route::get('/create-slider', CreateSlider::class)->name('create-slider');
+
+    //Sponsor routes
+    Route::get('/sponsors', Sponsers::class)->name('sponsors');
+
+
+    //Edit items route 
+    //Author zayn miraj
+    Route::get('/edit-category/{id}', [EditController::class, 'EditCategory'])->name('edit-category');
+    Route::post('/update-category', [EditController::class, 'UpdateCategory'])->name('update-category');
+    Route::get('/edit-sponsor/{id}', [EditController::class, 'EditSponsor'])->name('edit-sponsor');
+    Route::post('/update-sponsor', [EditController::class, 'UpdateSponsor'])->name('update-sponsor');
+    Route::get('/edit-slider/{id}', [EditController::class, 'EditSlider'])->name('edit-slider');
+    Route::post('/update-slider', [EditController::class, 'UpdateSlider'])->name('update-slider');
     
 });
 

@@ -57,7 +57,7 @@
                             </td>
 
                             <td><a href="app-category.html" class="text-reset"> {{$category->name}} </a></td>
-                            <td>3</td>
+                            <td> {{$category->product()->count()}} </td>
                             <td>
                                 <div class="badge badge-sa-success">
                                     @if($category->post_status == 'publish')
@@ -80,14 +80,17 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end"
                                         aria-labelledby="category-context-menu-0">
-                                        <li><a class="dropdown-item" href="#">Edit</a></li>
-                                        <li><a class="dropdown-item" href="#">Duplicate</a></li>
+                                        <li><a class="dropdown-item " href="#" data-bs-toggle="modal"
+                                                onclick="EditCategory({{$category->id}})"
+                                                data-bs-target="#EditModal">Update</a></li>
+                                        {{-- <li><a class="dropdown-item" href="#">Duplicate</a></li>
                                         <li><a class="dropdown-item" href="#">Add tag</a></li>
-                                        <li><a class="dropdown-item" href="#">Remove tag</a></li>
+                                        <li><a class="dropdown-item" href="#">Remove tag</a></li> --}}
                                         <li>
                                             <hr class="dropdown-divider" />
                                         </li>
-                                        <li><a class="dropdown-item text-danger" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"
+                                                wire:click.prevent="delete({{$category->id}})">Delete</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -99,4 +102,95 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <form method="POST" action="{{route('update-category')}}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Category</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+@push('scripts')
+<script>
+    function EditCategory(id){
+        $.ajax({
+                type: "GET",
+                url: "/edit-category/"+id,
+                success: function(response) {
+                    $('.modal-body').append(`
+                    <div class="row">
+                        <input type="hidden" name="id" value="${response.id}" />
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="category">Name</label>
+                                <input type="text" class="form-control rounded border" name="name" value="${response.name}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Slug</label>
+                                <input type="text" class="form-control rounded border" name="slug" value="${response.slug}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Status</label>
+                                <select class="form-control rounded border" name="status">
+                                    <option> ${response.post_status} </option>
+                                    <option value="publish"> Publish </option>
+                                    <option value="unpublish"> Unpublish </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="category">Description</label>
+                                <textarea type="text" class="form-control rounded border" cols="4" rows="2" name="description">
+                                       ${response.description}             </textarea>
+                            </div>
+
+                            
+                    
+                            <div class="form-group">
+                                <div class="fileupload">
+                                    <label class="filelabel">Choose File</label>
+                                    <input type="file" name="image" onchange="previewImage(event)" />
+                                </div>
+                                <div class="flex flex-row items-center">
+                                    <img src="{{asset('assets/image/category/${response.image}')}}" width="100px" />
+                                    <img id="preview" alt="Preview Image" style="display: none" width="100px">
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    `)
+                }
+                })
+    }
+
+
+    function previewImage(event) {
+        var input = event.target;
+        var image = document.getElementById('preview');
+        if (input.files && input.files[0]) {
+        image.style.display = "block";
+        var reader = new FileReader();
+        reader.onload = function(e) {
+        image.src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+        }
+</script>
+@endpush

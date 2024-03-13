@@ -890,63 +890,31 @@
                 <div class="col-lg-8">
                     <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#header-carousel" data-slide-to="1"></li>
-                            <li data-target="#header-carousel" data-slide-to="2"></li>
+                            @foreach ($sliders as $key => $slider)
+                            <li data-target="#header-carousel" data-slide-to="{{$key}}"
+                                class="{{$key == 0 ? 'active' : ''}}"></li>
+                            @endforeach
                         </ol>
                         <div class="carousel-inner">
-                            <div class="carousel-item position-relative active" style="height: 430px;">
-                                <img class="position-absolute w-100 h-100" src="{{asset('assets/img/carousel-1.jpg')}}"
-                                    style="object-fit: cover;">
-                                <div
-                                    class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    <div class="p-3" style="max-width: 700px;">
-                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men
-                                            Fashion</h1>
-                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna
-                                            amet
-                                            lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam
-                                        </p>
-                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                            href="#">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item position-relative" style="height: 430px;">
-                                <img class="position-absolute w-100 h-100" src="{{asset('assets/img/carousel-2.jpg')}}"
-                                    style="object-fit: cover;">
+                            @foreach($sliders as $key => $slider)
+                            <div class="carousel-item position-relative {{$key == 0 ? 'active' : ''}} "
+                                style="height: 430px;">
+                                <img class="position-absolute w-100 h-100"
+                                    src="{{asset('assets/image/slider/'. $slider->image)}}" style="object-fit: cover;">
                                 <div
                                     class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                     <div class="p-3" style="max-width: 700px;">
                                         <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">
-                                            Women
-                                            Fashion</h1>
-                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna
-                                            amet
-                                            lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam
+                                            {{$slider->title}} </h1>
+                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">
+                                            {{$slider->subtitle}}
                                         </p>
                                         <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
                                             href="#">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="carousel-item position-relative" style="height: 430px;">
-                                <img class="position-absolute w-100 h-100" src="{{asset('assets/img/carousel-3.jpg')}}"
-                                    style="object-fit: cover;">
-                                <div
-                                    class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    <div class="p-3" style="max-width: 700px;">
-                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids
-                                            Fashion</h1>
-                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna
-                                            amet
-                                            lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam
-                                        </p>
-                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                            href="#">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -1016,11 +984,12 @@
                     <a class="text-decoration-none" href="">
                         <div class="cat-item d-flex align-items-center mb-4">
                             <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                                <img class="img-fluid" src="{{asset('assets/img/cat-1.jpg')}}" alt="">
+                                <img class="img-fluid" src="{{asset('assets/image/category/'.$category->image)}}"
+                                    alt="">
                             </div>
                             <div class="flex-fill pl-3">
-                                <h6>Category Name</h6>
-                                <small class="text-body">100 Products</small>
+                                <h6>{{$category->name}}</h6>
+                                <small class="text-body">{{$category->product()->count() }} items</small>
                             </div>
                         </div>
                     </a>
@@ -1593,63 +1562,31 @@
                 <div class="col-lg-8">
                     <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#header-carousel" data-slide-to="1"></li>
-                            <li data-target="#header-carousel" data-slide-to="2"></li>
+                            @foreach ($sliders as $key => $slider)
+                            <li data-target="#header-carousel" data-slide-to="{{$key}}"
+                                class="{{$key == 0 ? 'active' : ''}}"></li>
+                            @endforeach
                         </ol>
                         <div class="carousel-inner">
-                            <div class="carousel-item position-relative active" style="height: 430px;">
-                                <img class="position-absolute w-100 h-100" src="{{asset('assets/img/carousel-1.jpg')}}"
-                                    style="object-fit: cover;">
-                                <div
-                                    class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    <div class="p-3" style="max-width: 700px;">
-                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men
-                                            Fashion</h1>
-                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna
-                                            amet
-                                            lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam
-                                        </p>
-                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                            href="#">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item position-relative" style="height: 430px;">
-                                <img class="position-absolute w-100 h-100" src="{{asset('assets/img/carousel-2.jpg')}}"
-                                    style="object-fit: cover;">
+                            @foreach($sliders as $key => $slider)
+                            <div class="carousel-item position-relative {{$key == 0 ? 'active' : ''}} "
+                                style="height: 430px;">
+                                <img class="position-absolute w-100 h-100"
+                                    src="{{asset('assets/image/slider/'. $slider->image)}}" style="object-fit: cover;">
                                 <div
                                     class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                     <div class="p-3" style="max-width: 700px;">
                                         <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">
-                                            Women
-                                            Fashion</h1>
-                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna
-                                            amet
-                                            lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam
+                                            {{$slider->title}} </h1>
+                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">
+                                            {{$slider->subtitle}}
                                         </p>
                                         <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
                                             href="#">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="carousel-item position-relative" style="height: 430px;">
-                                <img class="position-absolute w-100 h-100" src="{{asset('assets/img/carousel-3.jpg')}}"
-                                    style="object-fit: cover;">
-                                <div
-                                    class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    <div class="p-3" style="max-width: 700px;">
-                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids
-                                            Fashion</h1>
-                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna
-                                            amet
-                                            lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam
-                                        </p>
-                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                            href="#">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

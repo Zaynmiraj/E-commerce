@@ -98,7 +98,7 @@
                                                 </path>
                                             </svg>
                                         </span>
-                                        <span class="sa-nav__title">Catalog</span>
+                                        <span class="sa-nav__title">Catelog</span>
                                         <span class="sa-nav__arrow">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="6" height="9"
                                                 viewBox="0 0 6 9" fill="currentColor">
@@ -134,6 +134,23 @@
                                             </a>
                                         </li>
                                     </ul>
+                                </li>
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
+                                    data-sa-collapse-item="sa-nav__menu-item--open">
+                                    <a href="{{route('sponsors')}}" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <i class="fa-brands fa-bandcamp"></i>
+                                        </span>
+                                        <span class="sa-nav__title">Sponsor</span>
+                                        <span class="sa-nav__arrow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="9"
+                                                viewBox="0 0 6 9" fill="currentColor">
+                                                <path
+                                                    d="M5.605,0.213 C6.007,0.613 6.107,1.212 5.706,1.612 L2.696,4.511 L5.706,7.409 C6.107,7.809 6.107,8.509 5.605,8.808 C5.204,9.108 4.702,9.108 4.301,8.709 L-0.013,4.511 L4.401,0.313 C4.702,-0.087 5.304,-0.087 5.605,0.213 Z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                    </a>
                                 </li>
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
                                     data-sa-collapse-item="sa-nav__menu-item--open">
@@ -1601,6 +1618,9 @@
 
 
 
+
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('assets/lib/easing/easing.min.js')}}"></script>
@@ -1636,6 +1656,20 @@
     <script src="{{asset('assets/vendor/js/demo-chart-js.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" type="text/javascript"></script>
 
+    <script>
+        toastr.options = {
+        "debug": false,
+        "positionClass": "toast-bottom-right",
+        "onclick": null,
+        "fadeIn": 300,
+        "fadeOut": 1000,
+        "timeOut": 5000,
+        "extendedTimeOut": 1000
+        }
+        @if(Session::has('success'))
+        toastr.success("{{session('success')}}");
+        @endif
+    </script>
     @livewireScripts
     @stack('scripts')
 </body>

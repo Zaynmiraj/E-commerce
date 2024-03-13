@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('btn_title')->nullable();
             $table->boolean('status')->default(false);
+            $table->integer('slider_id')->nullable();
+            $table->integer('section_id')->nullable();
+            $table->string('url')->nullable();
             $table->string('image')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
