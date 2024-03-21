@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\ShopDetails;
+use Illuminate\Support\Facades\Auth;
+use Config;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $appName = ShopDetails::find(4);
+        config(['app.name' => $appName->shop_name]);
+        Config::set('mail.from.name', $appName->shop_name);
+        Config::set('mail.from.address', $appName->shop_email);
+        Config::set('cart.tax', $appName->tax);
     }
 }

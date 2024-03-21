@@ -10143,3 +10143,6 @@ h6 {
     left: 0px;
     opacity: 0;
 }
+body {
+    background-color: #f1f1f1 !important ;
+}

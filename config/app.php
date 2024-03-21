@@ -159,7 +159,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        App\Providers\CustomEmail::class,
+         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -183,6 +184,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
     ])->toArray(),
 
 ];

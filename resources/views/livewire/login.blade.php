@@ -8,18 +8,13 @@
                     @csrf
                     <div class="mb-4">
                         <label class="form-label">Email Address</label>
-                        <input id="email" type="email"
-                         name="email" :value="old('email')"
-                        required autofocus autocomplete="username"
-                        class="form-control form-control-lg" />
+                        <input id="email" type="email" name="email" :value="old('email')" required autofocus
+                            autocomplete="username" class="form-control form-control-lg" />
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Password</label>
-                        <input id="password"
-                        type="password"
-                        name="password"
-                        required autocomplete="current-password"
-                         class="form-control form-control-lg " />
+                        <input id="password" type="password" name="password" required autocomplete="current-password"
+                            class="form-control form-control-lg " />
                     </div>
                     <div class="mb-4 row py-2 flex-wrap">
                         <div class="col-auto me-auto">
@@ -28,12 +23,15 @@
                                 <span class="form-check-label">Remember me</span>
                             </label>
                         </div>
-                        <div class="col-auto d-flex align-items-center"><a href="auth-forgot-password.html">Forgot password?</a></div>
+                        <div class="col-auto d-flex align-items-center"><a href="auth-forgot-password.html">Forgot
+                                password?</a></div>
                     </div>
-                    <div><button type="submit" class="btn btn-primary btn-lg w-100">Sign In</button></div>
+                    <div><button type="submit" class="btn border-info bg-info btn-lg w-100">Sign In</button></div>
                 </form>
             </div>
-            {{-- <div class="sa-divider sa-divider--has-text"><div class="sa-divider__text">Or continue with</div></div> --}}
+            {{-- <div class="sa-divider sa-divider--has-text">
+                <div class="sa-divider__text">Or continue with</div>
+            </div> --}}
             <div class="card-body px-sm-5 m-sm-3 flex-grow-0">
                 <div class="d-flex flex-wrap me-n3 mt-n3">
                     <button type="button" class="btn btn-secondary flex-grow-1 me-3 mt-3">Google</button>

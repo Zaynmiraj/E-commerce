@@ -27,6 +27,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{asset('assets/vendor/bootstrap/css/bootstrap.ltr.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/vendor/highlight.js/styles/github.css')}}" />
@@ -41,6 +44,7 @@
     <link rel="stylesheet" href="{{asset('assets/vendor/css/style.ltr.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/vendor/css/style.rtl.css')}}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-ui-slider@1.12.1/jquery-ui.min.css">
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
@@ -214,6 +218,23 @@
                                 </li>
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
                                     data-sa-collapse-item="sa-nav__menu-item--open">
+                                    <a href="{{route('admin-blog')}}" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <i class="fa-brands fa-bandcamp"></i>
+                                        </span>
+                                        <span class="sa-nav__title">Blogs</span>
+                                        <span class="sa-nav__arrow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="9"
+                                                viewBox="0 0 6 9" fill="currentColor">
+                                                <path
+                                                    d="M5.605,0.213 C6.007,0.613 6.107,1.212 5.706,1.612 L2.696,4.511 L5.706,7.409 C6.107,7.809 6.107,8.509 5.605,8.808 C5.204,9.108 4.702,9.108 4.301,8.709 L-0.013,4.511 L4.401,0.313 C4.702,-0.087 5.304,-0.087 5.605,0.213 Z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </li>
+                                {{-- <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
+                                    data-sa-collapse-item="sa-nav__menu-item--open">
                                     <a href="" class="sa-nav__link" data-sa-collapse-trigger="">
                                         <span class="sa-nav__icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
@@ -276,16 +297,30 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
-                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="app-chat.html" class="sa-nav__link">
-                                        <span class="sa-nav__icon"><i class="fas fa-comment"></i></span>
-                                        <span class="sa-nav__title">Chat</span>
-                                        <span
-                                            class="sa-nav__menu-item-badge badge badge-sa-pill badge-sa-theme">8</span>
+                                </li> --}}
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
+                                    data-sa-collapse-item="sa-nav__menu-item--open">
+                                    <a href="{{route('general-setting')}}" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                viewBox="0 0 16 16" fill="currentColor">
+                                                <path
+                                                    d="M14,6.8l-0.2,0.1C14,7.3,14,7.6,14,8c0,0.4,0,0.7-0.1,1.1L14,9.2c1,0.6,1.4,1.9,0.8,3c-0.5,0.9-1.6,1.2-2.5,0.7l-0.5-0.3c-0.6,0.5-1.2,0.8-1.9,1.1v0.8c0,0.9-0.7,1.6-1.6,1.6H7.6C6.7,16,6,15.3,6,14.4v-0.8c-0.7-0.2-1.3-0.6-1.9-1.1l-0.5,0.3c-0.9,0.5-2,0.2-2.5-0.7c-0.6-1-0.3-2.4,0.8-3l0.2-0.1C2,8.7,2,8.4,2,8c0-0.4,0-0.7,0.1-1.1L2,6.8c-1.1-0.6-1.4-2-0.8-3C1.7,3,2.8,2.7,3.6,3.2l0.5,0.3C4.7,3,5.3,2.6,6,2.4V1.6C6,0.7,6.7,0,7.6,0h0.8C9.3,0,10,0.7,10,1.6v0.8c0.7,0.2,1.3,0.6,1.9,1.1l0.5-0.3c0.9-0.5,2-0.2,2.5,0.7C15.4,4.9,15.1,6.2,14,6.8z M8,5.5C6.6,5.5,5.5,6.6,5.5,8s1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5S9.4,5.5,8,5.5z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                        <span class="sa-nav__title">Settings</span>
+                                        <span class="sa-nav__arrow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="9"
+                                                viewBox="0 0 6 9" fill="currentColor">
+                                                <path
+                                                    d="M5.605,0.213 C6.007,0.613 6.107,1.212 5.706,1.612 L2.696,4.511 L5.706,7.409 C6.107,7.809 6.107,8.509 5.605,8.808 C5.204,9.108 4.702,9.108 4.301,8.709 L-0.013,4.511 L4.401,0.313 C4.702,-0.087 5.304,-0.087 5.605,0.213 Z">
+                                                </path>
+                                            </svg>
+                                        </span>
                                     </a>
                                 </li>
-                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                {{-- <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
                                     <a href="app-file-manager.html" class="sa-nav__link">
                                         <span class="sa-nav__icon"><i class="fas fa-hdd"></i></span>
                                         <span class="sa-nav__title">File Manager</span>
@@ -309,10 +344,12 @@
                                         </span>
                                         <span class="sa-nav__title">Analytics</span>
                                     </a>
-                                </li>
-                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
+                                </li> --}}
+
+                                {{-- <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
                                     data-sa-collapse-item="sa-nav__menu-item--open">
-                                    <a href="" class="sa-nav__link" data-sa-collapse-trigger="">
+                                    <a href="{{route('general-setting')}}" class="sa-nav__link"
+                                        data-sa-collapse-trigger="">
                                         <span class="sa-nav__icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                                                 viewBox="0 0 16 16" fill="currentColor">
@@ -333,22 +370,46 @@
                                     </a>
                                     <ul class="sa-nav__menu sa-nav__menu--sub" data-sa-collapse-content="">
                                         <li class="sa-nav__menu-item">
-                                            <a href="app-settings-toc.html" class="sa-nav__link">
+                                            <a href="{{route('menus')}}" class="sa-nav__link">
                                                 <span class="sa-nav__menu-item-padding"></span>
-                                                <span class="sa-nav__title">Table of Content</span>
+                                                <span class="sa-nav__title">Menu</span>
                                             </a>
                                         </li>
                                         <li class="sa-nav__menu-item">
-                                            <a href="app-settings-form.html" class="sa-nav__link">
+                                            <a href="{{route('smtp-mail')}}" class="sa-nav__link">
                                                 <span class="sa-nav__menu-item-padding"></span>
-                                                <span class="sa-nav__title">Form</span>
+                                                <span class="sa-nav__title">Email</span>
+                                            </a>
+                                        </li>
+                                        <li class="sa-nav__menu-item">
+                                            <a href="{{route('social-links')}}" class="sa-nav__link">
+                                                <span class="sa-nav__menu-item-padding"></span>
+                                                <span class="sa-nav__title">Social</span>
+                                            </a>
+                                        </li>
+                                        <li class="sa-nav__menu-item">
+                                            <a href="{{route('gateways')}}" class="sa-nav__link">
+                                                <span class="sa-nav__menu-item-padding"></span>
+                                                <span class="sa-nav__title">Payment</span>
+                                            </a>
+                                        </li>
+                                        <li class="sa-nav__menu-item">
+                                            <a href="{{route('notifications')}}" class="sa-nav__link">
+                                                <span class="sa-nav__menu-item-padding"></span>
+                                                <span class="sa-nav__title">Notification</span>
+                                            </a>
+                                        </li>
+                                        <li class="sa-nav__menu-item">
+                                            <a href="{{route('shop-details')}}" class="sa-nav__link">
+                                                <span class="sa-nav__menu-item-padding"></span>
+                                                <span class="sa-nav__title">Generel Setting</span>
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
                             </ul>
                         </li>
-                        <li class="sa-nav__section">
+                        {{-- <li class="sa-nav__section">
                             <div class="sa-nav__section-title"><span>Pages</span></div>
                             <ul class="sa-nav__menu sa-nav__menu--root">
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
@@ -375,7 +436,7 @@
                                         <li class="sa-nav__menu-item">
                                             <a href="" class="sa-nav__link">
                                                 <span class="sa-nav__menu-item-padding"></span>
-                                                {{-- <span class="sa-nav__title">Sign Up</span> --}}
+
                                             </a>
                                         </li>
                                         <li class="sa-nav__menu-item">
@@ -495,8 +556,8 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="sa-nav__section">
+                        </li> --}}
+                        {{-- <li class="sa-nav__section">
                             <div class="sa-nav__section-title"><span>Framework</span></div>
                             <ul class="sa-nav__menu sa-nav__menu--root">
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon"
@@ -803,7 +864,8 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
+
                     </ul>
                 </div>
             </div>
@@ -1089,527 +1151,35 @@
     </div>
     @else
     <div>
-        <div class="container-fluid">
-            <div class="row bg-secondary py-1 px-xl-5">
-                <div class="col-lg-6 d-none d-lg-block">
-                    <div class="d-inline-flex align-items-center h-100">
-                        <a class="text-body mr-3" href="">About</a>
-                        <a class="text-body mr-3" href="">Contact</a>
-                        <a class="text-body mr-3" href="">Help</a>
-                        <a class="text-body mr-3" href="">FAQs</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center text-lg-right">
-                    <div class="d-inline-flex align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My
-                                Account</button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                @auth
-                                <a href="#" class="dropdown-item"> {{Auth()->user()->name}}</a>
-                                <form action="{{route('logout')}}" method="post">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item" type="button">Logout</button>
-                                </form>
-                                @else
-                                <a href="{{route('create-account')}}"><button class="dropdown-item" type="button">Sign
-                                        in</button></a>
-                                <a href="{{route('register')}}" class="dropdown-item">Sign up</button>
-                                    @endif
-
-                            </div>
-                        </div>
-                        <div class="btn-group mx-2">
-                            <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                                data-toggle="dropdown">USD</button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <button class="dropdown-item" type="button">EUR</button>
-                                <button class="dropdown-item" type="button">GBP</button>
-                                <button class="dropdown-item" type="button">CAD</button>
-                            </div>
-                        </div>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                                data-toggle="dropdown">EN</button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <button class="dropdown-item" type="button">FR</button>
-                                <button class="dropdown-item" type="button">AR</button>
-                                <button class="dropdown-item" type="button">RU</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-inline-flex align-items-center d-block d-lg-none">
-                        <a href="" class="btn px-0 ml-2">
-                            <i class="fas fa-heart text-dark"></i>
-                            <span class="badge text-dark border border-dark rounded-circle"
-                                style="padding-bottom: 2px;">0</span>
-                        </a>
-                        <a href="" class="btn px-0 ml-2">
-                            <i class="fas fa-shopping-cart text-dark"></i>
-                            <span class="badge text-dark border border-dark rounded-circle"
-                                style="padding-bottom: 2px;">0</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
-                <div class="col-lg-4">
-                    <a href="" class="text-decoration-none">
-                        <span class="h1 text-uppercase text-primary bg-dark px-2">Multi</span>
-                        <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-6 text-left">
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for products">
-                            <div class="input-group-append">
-                                <span class="input-group-text bg-transparent text-primary">
-                                    <i class="fa fa-search"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-lg-4 col-6 text-right">
-                    <p class="m-0">Customer Service</p>
-                    <h5 class="m-0">+012 345 6789</h5>
-                </div>
-            </div>
-        </div>
-        <!-- Topbar End -->
-
-
-        <!-- Navbar Start -->
-        <div class="container-fluid bg-dark mb-30">
-            <div class="row px-xl-5">
-                <div class="col-lg-3 d-none d-lg-block">
-                    <a class="btn d-flex align-items-center justify-content-between bg-primary w-100"
-                        data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
-                        <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Categories</h6>
-                        <i class="fa fa-angle-down text-dark"></i>
-                    </a>
-                    <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light"
-                        id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
-                        <div class="navbar-nav w-100">
-                            <div class="nav-item dropdown dropright">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dresses <i
-                                        class="fa fa-angle-right float-right mt-1"></i></a>
-                                <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                    <a href="" class="dropdown-item">Men's Dresses</a>
-                                    <a href="" class="dropdown-item">Women's Dresses</a>
-                                    <a href="" class="dropdown-item">Baby's Dresses</a>
-                                </div>
-                            </div>
-                            <a href="" class="nav-item nav-link">Shirts</a>
-                            <a href="" class="nav-item nav-link">Jeans</a>
-                            <a href="" class="nav-item nav-link">Swimwear</a>
-                            <a href="" class="nav-item nav-link">Sleepwear</a>
-                            <a href="" class="nav-item nav-link">Sportswear</a>
-                            <a href="" class="nav-item nav-link">Jumpsuits</a>
-                            <a href="" class="nav-item nav-link">Blazers</a>
-                            <a href="" class="nav-item nav-link">Jackets</a>
-                            <a href="" class="nav-item nav-link">Shoes</a>
-                        </div>
-                    </nav>
-                </div>
-                <div class="col-lg-9">
-                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
-                        <a href="" class="text-decoration-none d-block d-lg-none">
-                            <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
-                            <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
-                        </a>
-                        <button type="button" class="navbar-toggler" data-toggle="collapse"
-                            data-target="#navbarCollapse">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                            <div class="navbar-nav mr-auto py-0">
-                                <a href="{{route('/')}}" class="nav-item nav-link active">Home</a>
-                                <a href="{{route('shop')}}" class="nav-item nav-link">Shop</a>
-                                <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
-                                <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i
-                                            class="fa fa-angle-down mt-1"></i></a>
-                                    <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                        <a href="{{route('cart')}}" class="dropdown-item">Shopping Cart</a>
-                                        <a href="{{route('checkout')}}" class="dropdown-item">Checkout</a>
-                                    </div>
-                                </div>
-                                <a href="{{route('contact-us')}}" class="nav-item nav-link">Contact</a>
-                            </div>
-                            <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                                <a href="" class="btn px-0">
-                                    <i class="fas fa-heart text-primary"></i>
-                                    <span class="badge text-secondary border border-secondary rounded-circle"
-                                        style="padding-bottom: 2px;">0</span>
-                                </a>
-                                <a href="{{route('cart')}}" class="btn px-0 ml-3">
-                                    <i class="fas fa-shopping-cart text-primary"></i>
-                                    <span class="badge text-secondary border border-secondary rounded-circle"
-                                        style="padding-bottom: 2px;">0</span>
-                                </a>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <!-- Navbar End -->
+        @livewire('Topper')
 
         <main>
             {{$slot}}
         </main>
 
 
-        <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
-            <div class="row px-xl-5 pt-5">
-                <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                    <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
-                    <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed
-                        dolor. Rebum tempor no vero est magna amet no</p>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-                    <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
-                </div>
-                <div class="col-lg-8 col-md-12">
-                    <div class="row">
-                        <div class="col-md-4 mb-5">
-                            <h5 class="text-secondary text-uppercase mb-4">Quick Shop</h5>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our
-                                    Shop</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop
-                                    Detail</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping
-                                    Cart</a>
-                                <a class="text-secondary mb-2" href="#"><i
-                                        class="fa fa-angle-right mr-2"></i>Checkout</a>
-                                <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-5">
-                            <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our
-                                    Shop</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop
-                                    Detail</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping
-                                    Cart</a>
-                                <a class="text-secondary mb-2" href="#"><i
-                                        class="fa fa-angle-right mr-2"></i>Checkout</a>
-                                <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-5">
-                            <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
-                            <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Your Email Address">
-                                    <div class="input-group-append">
-                                        <a href="{{route('register')}}" class="btn btn-primary">Sign Up</a>
-                                    </div>
-                                </div>
-                            </form>
-                            <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
-                            <div class="d-flex">
-                                <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-primary btn-square mr-2" href="#"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-square mr-2" href="#"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
-                <div class="col-md-6 px-xl-0">
-                    <p class="mb-md-0 text-center text-md-left text-secondary">
-                        &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
-                        by
-                        <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
-                    </p>
-                </div>
-                <div class="col-md-6 px-xl-0 text-center text-md-right">
-                    <img class="img-fluid" src="img/payments.png" alt="">
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
+        @livewire('Footer')
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+        <a href="#" class="btn bg-info border-white back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
     </div>
     @endif
     @else
     <div>
-        <div class="container-fluid">
-            <div class="row bg-secondary py-1 px-xl-5">
-                <div class="col-lg-6 d-none d-lg-block">
-                    <div class="d-inline-flex align-items-center h-100">
-                        <a class="text-body mr-3" href="">About</a>
-                        <a class="text-body mr-3" href="">Contact</a>
-                        <a class="text-body mr-3" href="">Help</a>
-                        <a class="text-body mr-3" href="">FAQs</a>
-                    </div>
-                </div>
-                <div class=" col-lg-6 text-center text-lg-right">
-                    <div class="d-inline-flex align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My
-                                Account</button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                @auth
-                                <a href="#" class="dropdown-item"> {{Auth()->user()->name}}</a>
-                                <form action="{{route('logout')}}" method="post">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item" type="button">Logout</button>
-                                </form>
-                                @else
-                                <a href="{{route('create-account')}}"><button class="dropdown-item" type="button">Sign
-                                        in</button></a>
-                                <a href="{{route('register')}}" class="dropdown-item">Sign up</a>
-                                @endif
+        @livewire('Topper')
 
-                            </div>
-                        </div>
-                        <div class="btn-group mx-2">
-                            <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                                data-toggle="dropdown">USD</button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <button class="dropdown-item" type="button">EUR</button>
-                                <button class="dropdown-item" type="button">GBP</button>
-                                <button class="dropdown-item" type="button">CAD</button>
-                            </div>
-                        </div>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                                data-toggle="dropdown">EN</button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <button class="dropdown-item" type="button">FR</button>
-                                <button class="dropdown-item" type="button">AR</button>
-                                <button class="dropdown-item" type="button">RU</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-inline-flex align-items-center d-block d-lg-none">
-                        <a href="" class="btn px-0 ml-2">
-                            <i class="fas fa-heart text-dark"></i>
-                            <span class="badge text-dark border border-dark rounded-circle"
-                                style="padding-bottom: 2px;">0</span>
-                        </a>
-                        <a href="" class="btn px-0 ml-2">
-                            <i class="fas fa-shopping-cart text-dark"></i>
-                            <span class="badge text-dark border border-dark rounded-circle"
-                                style="padding-bottom: 2px;">0</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
-                <div class="col-lg-4">
-                    <a href="" class="text-decoration-none">
-                        <span class="h1 text-uppercase text-primary bg-dark px-2">Multi</span>
-                        <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-6 text-left">
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for products">
-                            <div class="input-group-append">
-                                <span class="input-group-text bg-transparent text-primary">
-                                    <i class="fa fa-search"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-lg-4 col-6 text-right">
-                    <p class="m-0">Customer Service</p>
-                    <h5 class="m-0">+012 345 6789</h5>
-                </div>
-            </div>
-        </div>
-        <!-- Topbar End -->
-
-
-        <!-- Navbar Start -->
-        <div class="container-fluid bg-dark mb-30">
-            <div class="row px-xl-5">
-                <div class="col-lg-3 d-none d-lg-block">
-                    <a class="btn d-flex align-items-center justify-content-between bg-primary w-100"
-                        data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
-                        <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Categories</h6>
-                        <i class="fa fa-angle-down text-dark"></i>
-                    </a>
-                    <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light"
-                        id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
-                        <div class="navbar-nav w-100">
-                            <div class="nav-item dropdown dropright">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dresses <i
-                                        class="fa fa-angle-right float-right mt-1"></i></a>
-                                <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                    <a href="" class="dropdown-item">Men's Dresses</a>
-                                    <a href="" class="dropdown-item">Women's Dresses</a>
-                                    <a href="" class="dropdown-item">Baby's Dresses</a>
-                                </div>
-                            </div>
-                            <a href="" class="nav-item nav-link">Shirts</a>
-                            <a href="" class="nav-item nav-link">Jeans</a>
-                            <a href="" class="nav-item nav-link">Swimwear</a>
-                            <a href="" class="nav-item nav-link">Sleepwear</a>
-                            <a href="" class="nav-item nav-link">Sportswear</a>
-                            <a href="" class="nav-item nav-link">Jumpsuits</a>
-                            <a href="" class="nav-item nav-link">Blazers</a>
-                            <a href="" class="nav-item nav-link">Jackets</a>
-                            <a href="" class="nav-item nav-link">Shoes</a>
-                        </div>
-                    </nav>
-                </div>
-                <div class="col-lg-9">
-                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
-                        <a href="" class="text-decoration-none d-block d-lg-none">
-                            <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
-                            <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
-                        </a>
-                        <button type="button" class="navbar-toggler" data-toggle="collapse"
-                            data-target="#navbarCollapse">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                            <div class="navbar-nav mr-auto py-0">
-                                <a href="{{route('/')}}" class="nav-item nav-link active">Home</a>
-                                <a href="{{route('shop')}}" class="nav-item nav-link">Shop</a>
-                                <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
-                                <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i
-                                            class="fa fa-angle-down mt-1"></i></a>
-                                    <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                        <a href="{{route('cart')}}" class="dropdown-item">Shopping Cart</a>
-                                        <a href="{{route('checkout')}}" class="dropdown-item">Checkout</a>
-                                    </div>
-                                </div>
-                                <a href="{{route('contact-us')}}" class="nav-item nav-link">Contact</a>
-                            </div>
-                            <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                                <a href="" class="btn px-0">
-                                    <i class="fas fa-heart text-primary"></i>
-                                    <span class="badge text-secondary border border-secondary rounded-circle"
-                                        style="padding-bottom: 2px;">0</span>
-                                </a>
-                                <a href="{{route('cart')}}" class="btn px-0 ml-3">
-                                    <i class="fas fa-shopping-cart text-primary"></i>
-                                    <span class="badge text-secondary border border-secondary rounded-circle"
-                                        style="padding-bottom: 2px;">0</span>
-                                </a>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <!-- Navbar End -->
-
-        <main class="container">
+        <main>
             {{$slot}}
         </main>
 
 
-        <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
-            <div class="row px-xl-5 pt-5">
-                <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                    <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
-                    <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed
-                        dolor. Rebum tempor no vero est magna amet no</p>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-                    <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
-                </div>
-                <div class="col-lg-8 col-md-12">
-                    <div class="row">
-                        <div class="col-md-4 mb-5">
-                            <h5 class="text-secondary text-uppercase mb-4">Quick Shop</h5>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our
-                                    Shop</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop
-                                    Detail</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping
-                                    Cart</a>
-                                <a class="text-secondary mb-2" href="#"><i
-                                        class="fa fa-angle-right mr-2"></i>Checkout</a>
-                                <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-5">
-                            <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our
-                                    Shop</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop
-                                    Detail</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping
-                                    Cart</a>
-                                <a class="text-secondary mb-2" href="#"><i
-                                        class="fa fa-angle-right mr-2"></i>Checkout</a>
-                                <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-5">
-                            <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
-                            <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Your Email Address">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary">SignUp</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
-                            <div class="d-flex">
-                                <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-primary btn-square mr-2" href="#"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-square mr-2" href="#"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
-                <div class="col-md-6 px-xl-0">
-                    <p class="mb-md-0 text-center text-md-left text-secondary">
-                        &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
-                        by
-                        <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
-                    </p>
-                </div>
-                <div class="col-md-6 px-xl-0 text-center text-md-right">
-                    <img class="img-fluid" src="img/payments.png" alt="">
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
+        @livewire('Footer')
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+        <a href="#" class="btn bg-info border-white back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
     </div>
     @endif
@@ -1655,6 +1225,7 @@
     <script src="{{asset('assets/vendor/js/demo.js')}}"></script>
     <script src="{{asset('assets/vendor/js/demo-chart-js.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ui-slider@1.12.1/jquery-ui.min.js"></script>
 
     <script>
         toastr.options = {
@@ -1668,6 +1239,10 @@
         }
         @if(Session::has('success'))
         toastr.success("{{session('success')}}");
+        @elseif(Session::has('warning'))
+        toastr.warning("{{session('warning')}}");
+        @elseif(Session::has('error'))
+        toastr.error("{{session('error')}}");
         @endif
     </script>
     @livewireScripts

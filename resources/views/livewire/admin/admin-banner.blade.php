@@ -95,7 +95,9 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end"
                                         aria-labelledby="category-context-menu-0">
-                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#" data-bs-target="#Edit-banner"
+                                                onclick="EditBanner({{$banner->id}})" data-bs-toggle="modal">Edit
+                                                Banner</a></li>
                                         {{-- <li><a class="dropdown-item" href="#">Duplicate</a></li>
                                         <li><a class="dropdown-item" href="#">Add tag</a></li> --}}
                                         {{-- <li><a class="dropdown-item" href="#">Delete</a></li> --}}
@@ -164,6 +166,31 @@
             </div>
         </div>
     </div>
+
+    <!-- update banner -->
+    <div class="modal fade" id="Edit-banner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <form method="POST" action="{{route('update-banner')}}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update banner</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body edit-body">
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 @push('scripts')
@@ -180,11 +207,84 @@ reader.readAsDataURL(input.files[0]);
 }
 }
 
-$.ajax({
-type: 'GET',
-url : '/'
+function EditBanner(id){
 
-})
+
+
+
+
+    $.ajax({
+        type: 'GET',
+        url : "/edit-banner/"+id,
+        success: function(data){
+            $('.edit-body').append(
+            `<div class="form-group">
+                <input type="hidden" name="id" value="${data.id}" />
+                <label for="form-label">Banner title </label>
+                <input type="text" class="form-control rounded border" value="${data.title}" placeholder="Banner title" name="title" required />
+            </div>
+            <div class="form-group">
+                <label for="form-label">Banner Subtitle </label>
+                <input type="text" class="form-control rounded border" value="${data.subtitle}" placeholder="Banner subtitle" name="subtitle"
+                    required />
+            </div>
+            <div class="form-group">
+                <label for="form-label">Banner Url </label>
+                <input type="text" class="form-control rounded border" value=${data.url} placeholder="https://www...." name="url" required />
+            </div>
+            <div class="form-group">
+                <select class="form-control rounded border" name="section" required>
+                    ${data.section == 1 ? 
+                        `<option value="1"> Main </option>
+                        <option value="2"> Middle </option>
+                        <option value="3"> Bottom </option>
+                    ` : `<option value="1"> Main </option>
+                    <option value="2"> Middle </option>
+                    <option value="3"> Bottom </option>`}
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control rounded border" name="status" required>
+                    ${data.status == 1 ?
+                    `<option value="1"> Active </option>
+                    <option value="0"> Inactive </option>
+                    ` : `<option value="1"> Main </option>
+                    <option value="0"> Inactive </option>
+                    <option value="1"> Active </option>`}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="fileupload">
+                <label class="label-text"> Choose Image</label>"
+                <input type="file" class="form-control" name="image" onchange="previewImages(event)" />
+                </div>
+                <div class="flex flex-row ">
+                    <img src="{{asset('assets/image/banner/${data.image}')}}" width="200px" />
+                    <img style="display:none" id="previews" alt="Preview Image" width="200px">
+                </div>
+            </div>`
+            )
+        }
+    })
+
+}
+
+
+function previewImages(event) {
+var inputs = event.target;
+var images = document.getElementById('previews');
+if (inputs.files && inputs.files[0]) {
+images.style.display = "block";
+var readers = new FileReader();
+readers.onload = function(e) {
+images.src = e.target.result;
+}
+readers.readAsDataURL(inputs.files[0]);
+}
+}
+
+
 </script>
 
 

@@ -1,3 +1,58 @@
 <div>
-    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
+    <div class="min-h-100 p-0 p-sm-6 d-flex align-items-stretch">
+        <div class="card w-25x flex-grow-1 flex-sm-grow-0 m-sm-auto">
+            <div class="card-body p-sm-5 m-sm-3 flex-grow-0">
+                <h1 class="mb-0 fs-3">Sign Up</h1>
+                <div class="fs-exact-14 text-muted mt-2 pt-1 mb-5 pb-2">Create a account to continue.</div>
+                <form action="{{ route('register') }}" method="post">
+                    @csrf
+                    <div class="mb-4">
+                        <label class="form-label">Your Name</label>
+                        <input id="name" type="text" name="name" :value="old('email')" required autofocus
+                            autocomplete="username" class="form-control form-control-lg" />
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Email Address</label>
+                        <input id="email" type="email" name="email" :value="old('email')" required autofocus
+                            autocomplete="username" class="form-control form-control-lg" />
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Password</label>
+                        <input id="password" type="password" name="password" required autocomplete="current-password"
+                            class="form-control form-control-lg " />
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Confirm Password</label>
+                        <input id="password_confirmation" type="password" name="password_confirmation" required
+                            autocomplete="current-password" class="form-control form-control-lg " />
+                    </div>
+                    <div class="mb-4 row py-2 flex-wrap">
+                        <div class="col-auto me-auto">
+                            <label class="form-check mb-0">
+                                <input id="remember_me" type="checkbox" class="form-check-input" />
+                                <span class="form-check-label">Remember me</span>
+                            </label>
+                        </div>
+                        <div class="col-auto d-flex align-items-center"><a href="auth-forgot-password.html">Forgot
+                                password?</a></div>
+                    </div>
+                    <div><button type="submit" class="btn bg-info border-info btn-lg w-100">Sign In</button></div>
+                </form>
+            </div>
+            {{-- <div class="sa-divider sa-divider--has-text">
+                <div class="sa-divider__text">Or continue with</div>
+            </div> --}}
+            <div class="card-body px-sm-5 m-sm-3 flex-grow-0">
+                <div class="d-flex flex-wrap me-n3 mt-n3">
+                    <button type="button" class="btn btn-secondary flex-grow-1 me-3 mt-3">Google</button>
+                    <button type="button" class="btn btn-secondary flex-grow-1 me-3 mt-3">Facebook</button>
+                    <button type="button" class="btn btn-secondary flex-grow-1 me-3 mt-3">Twitter</button>
+                </div>
+                <div class="form-group mb-0 mt-4 pt-2 text-center text-muted">
+                    Don&#x27;t have an account?
+                    <a href="auth-sign-up.html">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

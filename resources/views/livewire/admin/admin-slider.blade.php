@@ -159,21 +159,26 @@
                         <div class="form-group">
                             <label for="category">Status</label>
                             <select class="form-control rounded border" name="status">
-                                <option> ${response.slider.status} </option>
-                                <option value="publish"> Publish </option>
-                                <option value="unpublish"> Unpublish </option>
+                                ${response.slider.status == 1 ? 
+                                    `<option value="1"> Active </option> <option value="0"> Inactive </option>` : `<option value="0"> Inactive </option><option value="1"> Active </option>`}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Section</label>
+                            <select class="form-control rounded border" name="section_id">
+                                <option value="1"> ${response.slider.section_id == 1 ? "Main" : ""} </option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="category">Description</label>
-                            <textarea type="text" class="form-control rounded border" cols="4" rows="2" name="description">
-                                                       ${response.slider.description ? response.slider.description : ""}             </textarea>
+                            <textarea type="text" class="form-control rounded border" cols="4" rows="2" name="description">${response.slider.description ? response.slider.description : ""}</textarea>
                         </div>
                         <div class="form-group">
-                            <select class="form-control rounded" name="url" >
-                                ${response.product.forEach(item => "<option>" + item + "</option>")}
+                            <select class="form-control rounded" name="url"  required>
+                                <option value="">Choose product</option>
+                                ${response.product.map(item => `<option value="${item.id}">${item.product_name}</option>` )}
                             </select>
                         </div>
                 
