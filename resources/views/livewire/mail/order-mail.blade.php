@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1> hello miraj </h1>
+    <h1> your order is {{$order}} </h1>
 </body>
 
 </html>

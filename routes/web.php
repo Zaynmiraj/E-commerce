@@ -41,6 +41,7 @@ use App\Livewire\Admin\GeneralSettings;
 use App\Livewire\Admin\AdminBlog;
 use App\Livewire\Wishlists;
 use App\Livewire\Blogs;
+use App\Livewire\ThankYou;
 
 
 
@@ -67,6 +68,7 @@ Route::get('/product-view/{slug}', ProductView::class)->name('product-view');
 Route::get('/create-account', Login::class)->name('create-account');
 Route::get('/signup', Signup::class)->name('signup');
 Route::get('/blog', Blogs::class)->name('blog');
+Route::get('/thank-you/{id}', ThankYou::class)->name('thank-you');
 
 
 Route::group(['middleware' => ['auth', 'authadmin']], function () {

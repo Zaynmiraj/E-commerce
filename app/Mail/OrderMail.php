@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\User;
+use App\Models\Orders;
 
 class OrderMail extends Mailable
 {
@@ -18,10 +18,10 @@ class OrderMail extends Mailable
      * Create a new message instance.
      */
 
-     public User $user;
-    public function __construct($user)
+     public Orders $order;
+    public function __construct($order)
     {
-        $this->user = $user;
+        $this->order = $order;
     }
 
     /**

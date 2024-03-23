@@ -40,11 +40,11 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address Line 1</label>
-                            <input wire:model="lane1" class="form-control" type="text" placeholder="123 Street">
+                            <input wire:model="lane_1" class="form-control" type="text" placeholder="123 Street">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address Line 2</label>
-                            <input wire:model="lane2" class="form-control" type="text" placeholder="123 Street">
+                            <input wire:model="lane_2" class="form-control" type="text" placeholder="123 Street">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Country</label>
@@ -89,31 +89,32 @@
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>First Name</label>
-                                <input class="form-control" type="text" placeholder="John">
+                                <input wire:model="fname" class="form-control" type="text" placeholder="John">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Last Name</label>
-                                <input class="form-control" type="text" placeholder="Doe">
+                                <input wire:model="lname" class="form-control" type="text" placeholder="Doe">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>E-mail</label>
-                                <input class="form-control" type="text" placeholder="example@email.com">
+                                <input wire:model="email" class="form-control" type="text"
+                                    placeholder="example@email.com">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Mobile No</label>
-                                <input class="form-control" type="text" placeholder="+123 456 789">
+                                <input wire:model="phone" class="form-control" type="text" placeholder="+123 456 789">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Address Line 1</label>
-                                <input class="form-control" type="text" placeholder="123 Street">
+                                <input wire:model="lane_1" class="form-control" type="text" placeholder="123 Street">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Address Line 2</label>
-                                <input class="form-control" type="text" placeholder="123 Street">
+                                <input wire:model="lane_2" class="form-control" type="text" placeholder="123 Street">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Country</label>
-                                <select class="custom-select">
+                                <select wire:model="country" class="custom-select">
                                     <option selected>United States</option>
                                     <option>Afghanistan</option>
                                     <option>Albania</option>
@@ -122,15 +123,29 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>City</label>
-                                <input class="form-control" type="text" placeholder="New York">
+                                <input wire:model="city" class="form-control" type="text" placeholder="New York">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>State</label>
-                                <input class="form-control" type="text" placeholder="New York">
+                                <input wire:model="state" class="form-control" type="text" placeholder="New York">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>ZIP Code</label>
-                                <input class="form-control" type="text" placeholder="123">
+                                <input wire:model="postal_code" class="form-control" type="text" placeholder="123">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="form-check-input" id="newaccount">
+                                    <label class="custom-control-label" for="newaccount">Create an account</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="form-check-input" id="shipto">
+                                    <label class="custom-control-label" for="shipto" data-toggle="collapse"
+                                        data-target="#shipping-address">Ship
+                                        to different address</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -174,6 +189,7 @@
                 <div class="mb-5">
                     <h5 class="section-title position-relative text-uppercase mb-3"><span
                             class="bg-secondary pr-3">Payment</span></h5>
+
                     <div class="bg-light p-30">
                         <div class="mb-4">
                             <select required wire:change="check" class="form-control" wire:model="payment">
@@ -185,7 +201,15 @@
                         </div>
                         <div class="bg-light py-4">
                             @if($payment == 'cash')
-                            <p class="heading-text text-medium text-success">I will pay by cash </p>
+                            <form wire:submit.prevent="makePayment">
+                                <p class="heading-text text-lg text-success">I will Pay by cash </p>
+                                <div wire:loading class="text-lg h1 text-info">
+                                    Proccesing Payment ........
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-block bg-info border-info font-weight-bold py-3">Place
+                                    Order</button>
+                            </form>
                             @elseif($payment == 'card')
                             <form wire:submit.prevent="makePayment">
                                 <div class="row">
@@ -193,18 +217,21 @@
                                         <label class=" control-label">Full Name</label>
                                         <input type="text" wire:model="name" class="form-control border border-cirle"
                                             placeholder="Name" />
+                                        @error($name) <span class="text-danger"> {{$message}} </span> @enderror
                                     </div>
                                     <div class="form-group">
                                         <label class=" control-label">Card Number</label>
                                         <input type="number" wire:model="number"
                                             class="form-control border border-cirle"
                                             placeholder="4242 4242 42424 4242" />
+                                        @error($number) <span class="text-danger"> {{$message}} </span> @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class=" control-label">Expiry Month</label>
                                             <input type="number" wire:model="month"
                                                 class="form-control border border-cirle" placeholder="12" />
+                                            @error($month) <span class="text-danger"> {{$message}} </span> @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -212,6 +239,7 @@
                                             <label class=" control-label">Expiry Year</label>
                                             <input type="number" wire:model="year"
                                                 class="form-control border border-cirle" placeholder="12" />
+                                            @error($year) <span class="text-danger"> {{$message}} </span> @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -219,11 +247,25 @@
                                             <label class="control-label">CVC/CVV</label>
                                             <input wire:model="cvv" type="password"
                                                 class="form-control border border-cirle" placeholder="***" />
+                                            @error($cvv) <span class="text-danger"> {{$message}} </span> @enderror
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-block bg-info border-info font-weight-bold py-3">Place
-                                    Order</button>
+                                <div wire:loading class="text-lg h1 text-info">
+                                    Proccesing Payment ........
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-block bg-info border-info font-weight-bold py-3">Place
+                                    Order & Pay: {{Cart::instance('cart')->total()}} </button>
+                            </form>
+                            @elseif($payment == 'paypal')
+                            <form wire:submit.prevent="makePayment">
+                                <div wire:loading class="text-lg h1 text-info">
+                                    Proccesing Payment ........
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-block bg-info border-info font-weight-bold py-3">Pay :
+                                    {{Cart::instance('cart')->total()}}</button>
                             </form>
                             @endif
                         </div>
